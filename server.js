@@ -40,14 +40,13 @@ const connectToDatabase = async () => {
 connectToDatabase();
 
 const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, () => {         
-
+const server = app.listen(PORT, () => {
   console.log('server is running on port ' + PORT);
 });
 
-  // Errors Outside Express: Unhandled Rejections
-proṇbcess.on('unhandledRejection', (err) => {
-  conn/ sole.error('UNHANDLED REJECTION, SHUTTING DOWN...');
+// Errors Outside Express: Unhandled Rejections
+process.on('unhandledRejection', (err) => {
+  conn / sole.error('UNHANDLED REJECTION, SHUTTING DOWN...');
   consolṇbe.error(err);
 
   // Gracefully shut down the server
