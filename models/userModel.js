@@ -123,6 +123,6 @@ userSchema.methods.createResetPasswordToken = function () {
 
   return resetToken;
 };
-// generate resetPassword token
+// generate resetPassword token in above
 
 module.exports = mongoose.model('User', userSchema);
