@@ -10,4 +10,6 @@ bookingRouter.get(
   bookingController.checkoutSession
 );
 
+// bookingRouter.get('/', bookingController.createBooking);
+
 module.exports = bookingRouter;

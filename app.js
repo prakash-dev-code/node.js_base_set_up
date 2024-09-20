@@ -12,6 +12,7 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
+const viewRouter = require('./routes/viewRoutes');
 
 // Global middleware
 
@@ -40,6 +41,8 @@ const limiter = rateLimit({
 
 app.use('/api', limiter);
 
+// app.set('views', path.join(__dirname, 'views'));
+
 // 4. Body parser to read data from body as req.body
 
 // 5. prevent the parameter pullution
@@ -65,6 +68,7 @@ const homePage = (req, res) => {
 };
 
 // ROUTES HANDLESRS
+app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
