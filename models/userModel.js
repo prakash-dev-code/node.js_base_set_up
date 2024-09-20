@@ -21,12 +21,12 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['user', 'admin', 'staff', 'member'],
+    enum: ['user', 'admin', 'staff', 'member', 'lead-guide'],
     default: 'user',
   },
   photo: {
     type: String,
-    default: "default.jpg"
+    default: 'default.jpg',
   },
   password: {
     type: String,
@@ -123,6 +123,6 @@ userSchema.methods.createResetPasswordToken = function () {
 
   return resetToken;
 };
-// generate resetPassword token
+// generate resetPassword token in above
 
 module.exports = mongoose.model('User', userSchema);

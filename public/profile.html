@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .upload-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .upload-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .preview {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .preview img {
+            max-width: 100px;
+            border-radius: 50%;
+            border: 2px solid #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Upload Profile Photo</h2>
+        <form id="uploadForm" enctype="multipart/form-data" style="margin-bottom: 20px;">
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            <label class="upload-btn" for="fileInput">Choose Photo</label>
+        </form>
+
+        <img src="" alt="" style="width: 300px;height: 300px;">
+    </div>
+
+    <!-- Include external JavaScript file -->
+    <script src="./js//getprofile.js"></script>
+</body>
+
+</html>

@@ -10,6 +10,10 @@ const sendEmail = async (options) => {
       user: process.env.SMTP_EMAIL_USERNAME,
       pass: process.env.SMTP_EMAIL_PASSWORD,
     },
+    tls: {
+      rejectUnauthorized: false, // Do not reject unauthorized TLS certificates
+    },
+    connectionTimeout:1000000
   });
 
   // 2. Define the email options

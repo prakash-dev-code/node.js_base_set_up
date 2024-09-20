@@ -37,10 +37,9 @@ const upload = multer({
   fileFilter: multerFilter,
 });
 
-exports.UserPhotoUpload = upload.single('photo');
+exports.UserPhotoUpload = upload.single('photo'); //use fields for uploading multiple images like fields([{ name: 'images',maxCount:3}])
 
 exports.updateCurrentUser = catchAsync(async (req, res, next) => {
- 
   //1. create error if user enter password
   if (req.body.password || req.body.confirmPassword) {
     return next(
@@ -57,7 +56,7 @@ exports.updateCurrentUser = catchAsync(async (req, res, next) => {
 
   const filterBody = filterObj(req.body, 'name', 'email');
 
-  if(req.file) filterBody.photo = req.file.filename
+  if (req.file) filterBody.photo = req.file.filename;
 
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filterBody, {
     new: true,
