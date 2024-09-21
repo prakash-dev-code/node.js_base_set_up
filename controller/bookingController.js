@@ -3,6 +3,7 @@ const catchAsync = require('./../utils/catchAsync');
 const Tour = require('./../models/tourModel');
 const Booking = require('./../models/bookingModel');
 const AppError = require('../utils/appError');
+const Factory = require('./handlerFactory');
 
 exports.checkoutSession = catchAsync(async (req, res, next) => {
   // 1. // get the current tour
@@ -73,3 +74,9 @@ exports.createBooking = catchAsync(async function (req, res, next) {
   // Redirect to the original URL without the query parameters
   res.redirect(req.originalUrl.split('?')[0]);
 });
+
+exports.getAllBookings = Factory.getAll(Booking);
+exports.getBooking = Factory.getOne(Booking);
+exports.deleteBooking = Factory.deleteOne(Booking);
+exports.updateBooking = Factory.updateOne(Booking);
+exports.createBooking = Factory.creteOne(Booking);
