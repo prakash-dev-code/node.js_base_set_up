@@ -46,8 +46,8 @@ const server = app.listen(PORT, () => {
 
 // Errors Outside Express: Unhandled Rejections
 process.on('unhandledRejection', (err) => {
-  conn / sole.error('UNHANDLED REJECTION, SHUTTING DOWN...');
-  consolṇbe.error(err);
+  console.error('UNHANDLED REJECTION, SHUTTING DOWN...');
+  console.error(err);
 
   // Gracefully shut down the server
   server.close(() => {

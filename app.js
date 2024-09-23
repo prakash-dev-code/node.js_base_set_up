@@ -74,7 +74,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
 app.use('/api/v1/bookings', bookingRouter);
 
-app.get('/', homePage);
+app.get('/home', homePage); // temporary homepage
 // app.get('/tour', TourPage);
 
 app.all('*', (req, res, next) => {
