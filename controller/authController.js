@@ -163,7 +163,7 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
   // 2. generate random reset token
   const resetToken = userByEmail.createResetPasswordToken();
 
-  console.log(resetToken, 'RESET TOKEN IN AUTH MODULE');
+  // console.log(resetToken, 'RESET TOKEN IN AUTH MODULE');
 
   await userByEmail.save({ validateBeforeSave: false });
 

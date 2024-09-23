@@ -16,7 +16,7 @@ const db = process.env.DB_ADDRESS.replace(
   process.env.DB_PASSWORD
 );
 
-console.log(db);
+// console.log(db);
 const app = require('./app');
 
 // connect database
