@@ -13,7 +13,7 @@ const sendEmail = async (options) => {
     tls: {
       rejectUnauthorized: false, // Do not reject unauthorized TLS certificates
     },
-    connectionTimeout:1000000
+    connectionTimeout: 1000000,
   });
 
   // 2. Define the email options
@@ -27,7 +27,7 @@ const sendEmail = async (options) => {
   // 3. Send the email
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent: ', info.response); // Log the response from the SMTP server
+    // console.log('Email sent: ', info.response); // Log the response from the SMTP server
 
     // Optionally, return the info object for further processing
     return info;

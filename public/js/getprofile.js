@@ -33,7 +33,7 @@ const preview = document.getElementById('preview');
 fileInput.addEventListener('change', function () {
   const file = fileInput.files[0];
 
-  console.log(file, 'FILE SELECTED');
+  // console.log(file, 'FILE SELECTED');
 
   if (file) {
     // Preview the selected image

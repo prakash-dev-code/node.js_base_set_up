@@ -1,8 +1,18 @@
 const multer = require('multer');
+const { S3Client } = require('@aws-sdk/client-s3');
+const multerS3 = require('multer-s3');
 const User = require('./../models/userModel');
 const appError = require('../utils/appError');
 const catchAsync = require('./../utils/catchAsync');
 const Factory = require('./handlerFactory');
+
+const s3Client = new S3Client({
+  region: 'eu-north-1',
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  },
+});
 
 const filterObj = (obj, ...allowFields) => {
   const newObj = {};
@@ -16,13 +26,23 @@ const filterObj = (obj, ...allowFields) => {
 
 exports.getAllUsers = Factory.getAll(User);
 
-const multerStorage = multer.diskStorage({
-  destination: './public/img/users',
-  filename: (req, file, cb) => {
+const multerStorage = multerS3({
+  s3: s3Client,
+  bucket: 'test-cloudfront-eu-north-1',
+  // acl: 'public-read',
+  key: (req, file, cb) => {
     const ext = file.mimetype.split('/')[1];
-    cb(null, `user-${req.user.id}-${Date.now()}.${ext}`);
+    cb(null, `users/user-${req.user.id}-${Date.now()}-profile_img.${ext}`);
   },
 });
+
+// const multerStorage = multer.diskStorage({
+//   destination: './public/img/users',
+//   filename: (req, file, cb) => {
+//     const ext = file.mimetype.split('/')[1];
+//     cb(null, `user-${req.user.id}-${Date.now()}.${ext}`);
+//   },
+// });
 
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image')) {
@@ -56,7 +76,7 @@ exports.updateCurrentUser = catchAsync(async (req, res, next) => {
 
   const filterBody = filterObj(req.body, 'name', 'email');
 
-  if (req.file) filterBody.photo = req.file.filename;
+  if (req.file) filterBody.photo = req.file.key.split('/').pop();
 
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filterBody, {
     new: true,

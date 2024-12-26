@@ -16,7 +16,7 @@ const db = process.env.DB_ADDRESS.replace(
   process.env.DB_PASSWORD
 );
 
-console.log(db);
+// console.log(db);
 const app = require('./app');
 
 // connect database
@@ -46,8 +46,8 @@ const server = app.listen(PORT, () => {
 
 // Errors Outside Express: Unhandled Rejections
 process.on('unhandledRejection', (err) => {
-  conn / sole.error('UNHANDLED REJECTION, SHUTTING DOWN...');
-  consolṇbe.error(err);
+  console.error('UNHANDLED REJECTION, SHUTTING DOWN...');
+  console.error(err);
 
   // Gracefully shut down the server
   server.close(() => {

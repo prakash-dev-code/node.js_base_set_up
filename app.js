@@ -20,6 +20,8 @@ app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// app.set('view engine', 'ejs');
 // Midddeware
 
 //1. set security for HTTP requests with helmet
@@ -62,7 +64,7 @@ app.use((req, res, next) => {
 
 const homePage = (req, res) => {
   res.status(200).send({
-    message: 'Hello server , Its a HOME page!',
+    message: 'Hello server , created booking!',
     sourcePath: '/',
   });
 };
@@ -74,7 +76,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
 app.use('/api/v1/bookings', bookingRouter);
 
-app.get('/', homePage);
+app.get('/home', homePage); // temporary homepage
 // app.get('/tour', TourPage);
 
 app.all('*', (req, res, next) => {
