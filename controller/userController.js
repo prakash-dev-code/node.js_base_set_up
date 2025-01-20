@@ -76,7 +76,7 @@ exports.updateCurrentUser = catchAsync(async (req, res, next) => {
 
   const filterBody = filterObj(req.body, 'name', 'email');
 
-  if (req.file) filterBody.photo = req.file.key.split('/').pop();
+  if (req.file) filterBody.photo = req.file.location;
 
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filterBody, {
     new: true,
